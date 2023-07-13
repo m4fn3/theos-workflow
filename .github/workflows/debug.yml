@@ -37,9 +37,9 @@ jobs:
           gmake clean package
 
       - name: Build for rootless
-         run: |
-           rm -f packages/*
-           gmake clean package ROOTLESS=1
+          run: |
+            rm -f packages/*
+            gmake clean package ROOTLESS=1
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
