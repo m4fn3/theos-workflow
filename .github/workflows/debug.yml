@@ -1,0 +1,48 @@
+name: Build a debug deb
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build tweak with the debug mode
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'main'
+          submodules: true
+
+      - name: Check cache
+        id: verify-cache
+        run: |
+          echo "heads=`git ls-remote https://github.com/theos/theos | head -n 1 | cut -f 1`-`git ls-remote https://github.com/theos/sdks | head -n 1 | cut -f 1`" >> $GITHUB_OUTPUT
+
+      - name: Use cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ${{ github.workspace }}/theos
+          key: ${{ runner.os }}-${{ steps.verify-cache.outputs.heads }}
+
+      - name: Prepare Theos
+        uses: Randomblock1/theos-action@v1
+
+      - name: Retrieve version
+        id: version
+        run: echo "TWEAK_VERSION=$(cat control | grep -E 'Version:(.*)' | awk '{ print $2 }')" >> $GITHUB_OUTPUT
+
+      - name: Build for rootful
+        run: |
+          rm -f packages/*
+          gmake clean package
+
+      - name: Build for rootless
+         run: |
+           rm -f packages/*
+           gmake clean package ROOTLESS=1
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: packages
+          path: ./packages
