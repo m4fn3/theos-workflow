@@ -40,7 +40,6 @@ jobs:
 
       - name: Build for rootless
         run: |
-          rm -f packages/*
           gmake clean package ROOTLESS=1
 
       - name: Upload artifacts
