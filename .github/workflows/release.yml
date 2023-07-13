@@ -1,7 +1,5 @@
 name: Build a release deb
 on:
-  push:
-  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -11,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: 'main'
+          ref: 'master'
           submodules: true
 
       - name: Check cache
