@@ -16,14 +16,14 @@ THEOS_DEVICE_PORT=22
 SDK_PATH = $(THEOS)/sdks/iPhoneOS14.5.sdk/
 SYSROOT = $(SDK_PATH)
 
-INSTALL_TARGET_PROCESSES = Discord
+INSTALL_TARGET_PROCESSES = Mirrativ
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = DiscordSideloadFix
-DiscordSideloadFix_FILES = Tweak.xm
-DiscordSideloadFix_CFLAGS = -fobjc-arc
-DiscordSideloadFix_FRAMEWORKS = UIKit Foundation
+TWEAK_NAME = Gommirativ
+Gommirativ_FILES = Tweak.xm
+Gommirativ_CFLAGS = -fobjc-arc
+Gommirativ_FRAMEWORKS = UIKit Foundation
 
 
 include $(THEOS_MAKE_PATH)/tweak.mk

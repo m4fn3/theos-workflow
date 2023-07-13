@@ -1,9 +1,9 @@
-Package: com.m4fn3.discord-sideload-fix
-Name: DiscordSideloadFix
-Version: 1.0.0
+Package: com.m4fn3.gommirativ
+Name: Gommirativ
+Version: 0.0.1
 Architecture: iphoneos-arm
-Description: Fix the crash on sideloaded Discord
+Description: Bypass jailbreak detection of Mirrativ app!
 Maintainer: mafu
 Author: mafu
 Section: Tweaks
-Depends: mobilesubstrate
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.3)

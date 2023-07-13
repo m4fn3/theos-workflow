@@ -1,12 +1,37 @@
+#include <dlfcn.h>
+#import <substrate.h>
 #import <Foundation/Foundation.h>
 
-%hook NSFileManager
-- (NSURL *)containerURLForSecurityApplicationGroupIdentifier:(NSString *)groupIdentifier {
-    if (groupIdentifier != nil) {
-        NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-        NSURL *documentsURL = [paths lastObject];
-        return [documentsURL URLByAppendingPathComponent:@"AppGroup"];
-    }
-    return %orig(groupIdentifier);
+// #define PLIST_PATH @"/var/mobile/Library/Preferences/com.m4fn3.gommirativ.preferences.plist"
+//
+// inline bool getPrefBool(NSString *key){
+//     return [[[NSDictionary dictionaryWithContentsOfFile:PLIST_PATH] objectForKey:key] boolValue];
+// }
+
+int checkPKGManager(void* this_) {
+    return 0;
 }
-%end
+int checkPath(void* this_){
+    return 0;
+}
+int hasPackageManagerScheme(void* this_){
+    return 0;
+}
+int checkWritable(void* this_){
+    return 0;
+}
+
+%ctor {
+    NSLog(@"Gommirativ | start!");
+    NSString *appPath = [NSString stringWithFormat: @"%@%@", [[NSBundle mainBundle] bundlePath], @"/mirrativ"];
+    void* exec = dlopen([appPath UTF8String], RTLD_LAZY | RTLD_LOCAL | RTLD_NOLOAD);
+
+    void* sym_checkPKGManager = dlsym(exec, "$s8mirrativ18JailbreakDetectionC15checkPKGManagerSbvg");
+    MSHookFunction((void *)sym_checkPKGManager ,(void*)checkPKGManager, NULL);
+    void* sym_checkPath = dlsym(exec, "$s8mirrativ18JailbreakDetectionC9checkPathSbvg");
+    MSHookFunction((void *)sym_checkPath ,(void*)checkPath, NULL);
+    void* sym_hasPackageManagerScheme = dlsym(exec, "$s8mirrativ18JailbreakDetectionC23hasPackageManagerSchemeSbvg");
+    MSHookFunction((void *)sym_hasPackageManagerScheme ,(void*)hasPackageManagerScheme, NULL);
+    void* sym_checkWritable = dlsym(exec, "$s8mirrativ18JailbreakDetectionC13checkWritableSbvg");
+    MSHookFunction((void *)sym_checkWritable ,(void*)checkWritable, NULL);
+}
