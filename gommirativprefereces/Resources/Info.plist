@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>GommirativPreferences</string>
+	<string>GommirativPrefereces</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.m4fn3.gommirativ.preferences</string>
+	<string>com.m4fn3.gommirativ_preferences</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

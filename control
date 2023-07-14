@@ -2,8 +2,8 @@ Package: com.m4fn3.gommirativ
 Name: Gommirativ
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: Bypass jailbreak detection of Mirrativ app!
+Description: An awesome MobileSubstrate tweak!
 Maintainer: mafu
 Author: mafu
 Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.3)
+Depends: mobilesubstrate (>= 0.9.5000)
