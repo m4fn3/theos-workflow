@@ -30,6 +30,9 @@ THEOS_DEVICE_IP = 192.168.11.9 -p 22
 
 INSTALL_TARGET_PROCESSES = mirrativ
 
+# framework not found Preferences が GHActionで起きるため
+SDK_PATH = $(THEOS)/sdks/iPhoneOS14.5.sdk/
+SYSROOT = $(SDK_PATH)
 
 include $(THEOS)/makefiles/common.mk
 
