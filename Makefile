@@ -42,5 +42,5 @@ Gommirativ_FILES = Tweak.xm
 Gommirativ_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
-SUBPROJECTS += gommirativprefereces
+# SUBPROJECTS += gommirativprefereces
 include $(THEOS_MAKE_PATH)/aggregate.mk
