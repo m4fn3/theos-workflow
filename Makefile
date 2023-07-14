@@ -22,9 +22,12 @@ FINALPACKAGE=1
 
 THEOS_PACKAGE_SCHEME = rootless
 
-# THEOS_USE_NEW_ABI=1
+THEOS_USE_NEW_ABI=1
+
+# [GHAction] ビルドできても動作しなくなるので
 # TARGET = iphone:14.5:14.5
 TARGET := iphone:clang:latest:7.0
+
 ARCHS = arm64 arm64e
 
 # THEOS_DEVICE_IP = 192.168.11.9 -p 22
